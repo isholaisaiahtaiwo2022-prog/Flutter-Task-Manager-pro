@@ -7,6 +7,9 @@ class ApiService {
   Future<Task> getTask() async {
     final response = await http.get(
       Uri.parse('https://jsonplaceholder.typicode.com/todos'),
+      headers: {
+        'Accept': 'application/json'
+      },
     );
 
     // print(response.statusCode);

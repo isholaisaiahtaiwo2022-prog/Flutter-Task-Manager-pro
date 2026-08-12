@@ -13,7 +13,7 @@ class Task {
     required this.completed,
   });
 
-  factory Task.fronJson(Map<String, dynamic> json) {
+  factory Task.fromJson(Map<String, dynamic> json) {
     return Task(
       userId: json['userId'],
       id: json['id'],
