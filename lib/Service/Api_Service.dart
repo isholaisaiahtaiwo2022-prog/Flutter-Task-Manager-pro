@@ -9,11 +9,15 @@ class ApiService {
       Uri.parse('https://jsonplaceholder.typicode.com/todos'),
     );
 
-    print(response.statusCode);
-    final jsonData = jsonDecode(response.body);
-    final task = Task.fronJson(jsonData);
-    print(task.title);
+    // print(response.statusCode);
+    if (response.statusCode == 200) {
+      final jsonData = jsonDecode(response.body);
 
-    return task;
+      return Task.fromJson(jsonData);
+    } else {
+      throw Exception(
+        'Failed to load task. Status Code: ${response.statusCode}',
+      );
+    }
   }
 }

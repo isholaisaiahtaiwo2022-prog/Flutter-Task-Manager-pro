@@ -12,6 +12,7 @@ class _TaskscreenState extends State<Taskscreen> {
   final ApiService apiService = ApiService();
 
   String taskTitle = 'Loading...';
+  bool completed = true;
 
   @override
   void initState() {
@@ -25,18 +26,15 @@ class _TaskscreenState extends State<Taskscreen> {
 
     setState(() {
       taskTitle = task.title;
+      completed = task.completed;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Task Manager'),
-      ),
-      body: Center(
-        child: Text(taskTitle),
-      ),
+      appBar: AppBar(title: const Text('Task Manager')),
+      body: Center(child: Text(taskTitle)),
     );
   }
 }
